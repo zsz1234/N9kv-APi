@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+
+	<head>
+
+		<meta charset="UTF-8">
+		<title></title>
+
+		<link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap-grid.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap-reboot.css' %}">
+
+<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			.main-container {
+				margin-top: 20px;
+				_margin-top: 10px;
+				+margin-top: 10px:;
+				_display: inline;
+			}
+			
+			body {
+				margin: 0;
+				font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+				font-size: 14px;
+				line-height: 20px;
+				background-color: #ebebeb;
+			}
+			
+			html {
+				font-size: 100%;
+				-webkit-text-size-adjust: 100%;
+				-ms-text-size-adjust: 100%;
+			}
+			
+			.container,
+			.navbar-fixed-top .container,
+			.navbar-fixed-bottom .container {
+				width: auto;
+				height: 100%;
+				_height: auto;
+			}
+			
+			.container {
+				margin-right: auto;
+				margin-left: auto;
+				*zoom: 1:;
+			}
+			
+			.container::before,
+			.container::after {
+				display: table;
+				line-height: 0;
+				content: "";
+			}
+			
+			.container::after {
+				clear: both;
+			}
+			
+			.row-fluid {
+				width: 100%;
+				*zoom: 1:;
+			}
+			
+			.main_content {
+				-moz-border-radius: ?4px;
+				-webkit-border-radius: ?4px;
+				border-radius: ?4px;
+				-moz-box-shadow: 1px 2px 4px #333333;
+				-webkit-box-shadow: 1px 2px 4px #333333;
+				box-shadow: 1px 2px 4px #333333;
+				background-color: #d8e1ec;
+				min-height: 500px;
+				_height: 500px;
+			}
+			
+			.row-fluid::before,
+			.row-fluid::after {
+				display: table;
+				line-height: 0;
+				content: "";
+			}
+			
+			.row-fluid::after {
+				clear: both;
+			}
+			
+			[class*='span'] {
+				float: left;
+				min-height: 1px;
+				_height: 1px;
+			}
+			
+			.span3 {
+				width: 220px;
+			}
+			
+			.body_content {
+				_float: left;
+				_display: inline;
+				height: 100%;
+			}
+			
+			.span9 {
+				width: 730px;
+			}
+			
+			.row-fluid [class*='span'] {
+				display: block;
+				float: left;
+				_display: inline;
+				width: 100%;
+				min-height: 30px;
+				_height: 30px;
+				margin-left: 2.12%;
+				*margin-left: 2.074468085106383%:;
+				-webkit-box-sizing: border-box;
+				-moz-box-sizing: border-box;
+				box-sizing: border-box;
+			}
+			
+			.row-fluid .span3 {
+				width: 23.4%;
+				*width: 23.351063829787233%:;
+				float: left;
+			}
+			
+			.row-fluid [class*='span']:first-child {
+				margin-left: 0px;
+			}
+			
+			.span9 {
+				width: 700px;
+			}
+			
+			.config_content {
+				-moz-border-radius: ?4px;
+				-webkit-border-radius: ?4px;
+				border-radius: ?4px;
+				height: 100%;
+				_float: left;
+				_display: inline;
+			}
+			
+			.row-fluid .span9 {
+				width: 74.46%;
+				*width: 74.41489361702126%:;
+				_width: 73.45489361702126%;
+			}
+			
+			.well {
+				min-height: 20px;
+				_height: 20px;
+				padding: 19px;
+				margin-bottom: 20px;
+				background-color: #f5f5f5;
+				border: 1px solid #e3e3e3;
+				-webkit-border-radius: 4px;
+				-moz-border-radius: 4px;
+				border-radius: 4px;
+				-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+				-moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+				box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.05);
+			}
+			
+			.setconfig_height {
+				min-height: 800px;
+				_height: 490px;
+			}
+			
+			.well_reset {
+				margin-top: 4px;
+				margin-right: 4px;
+				margin-bottom: 4px;
+				margin-left: 4px;
+				padding-left: 3%;
+				padding-right: 3%;
+				padding-top: 4%;
+				background-color: #FFFFFF;
+			}
+			
+			.control-group {
+				margin-bottom: 8px;
+			}
+			
+			.width_100p {
+				width: 100%;
+			}
+			
+			.accordion-heading {
+				border-bottom: 0;
+			}
+			
+			.marginbottom_15 {
+				margin-bottom: 15px;
+			}
+			
+			a {
+				text-decoration: none;
+			}
+			
+			.accordion-toggle {
+				cursor: pointer;
+			}
+			
+			.paddingleft_5 {
+				padding-left: 5px;
+			}
+			
+			.height_30 {
+				height: 30px;
+			}
+			
+			.third_menu_font_back {
+				background-color: #F4F4F4;
+			}
+			
+			.rounddiv {
+				border: dashed?0px?#000000;
+				-webkit-border-radius: 5px;
+				-moz-border-radius: 5px;
+				-o-border-radius: 5px;
+				border-radius: 5px;
+			}
+			
+			.accordion-heading .accordion-toggle {
+				display: block;
+			}
+			
+			.pull-left {
+				float: left;
+			}
+			
+			.paddingleft_n2 {
+				padding-left: -2px;
+			}
+			
+			.ie6marginleft_n7 {
+				_margin-left: -4px;
+			}
+			
+			.margintop_8 {
+				margin-top: 8px;
+			}
+			
+			.width_15 {
+				width: 15px;
+			}
+			
+			.paddingtop_5 {
+				padding-top: 5px;
+			}
+			
+			.marginleft_3 {
+				margin-left: 3px;
+			}
+			
+			.third_menu_font {
+				font-size: 14px;
+				font-weight: bold;
+				color: #2f83fd;
+			}
+			
+			label,
+			input,
+			button,
+			select,
+			textarea {
+				font-size: 14px;
+				font-weight: normal;
+				line-height: 20px;
+			}
+			
+			label {
+				display: block;
+				margin-bottom: 5px;
+			}
+			
+			.ic-close {
+				width: 16px;
+				height: 16px;
+				background-repeat: no-repeat;
+				overflow: hidden;
+				background-image: url('../res/atp-icon.png?WS550V100R001C01B0211234567890');
+				background-position: left -697px;
+			}
+			
+			.collapse {
+				height: 0px;
+				overflow: hidden;
+				-webkit-transition: height 0.35s ease;
+				-moz-transition: height 0.35s ease;
+				-o-transition: height 0.35s ease;
+				transition: height 0.35s ease;
+			}
+			
+			.show {
+				display: block;
+			}
+			
+			.collapse.in {
+				height: auto;
+			}
+			
+			.paddingleft_87 {
+				padding-left: 6%;
+				width: 98%\9;
+				padding-top: 15px;
+			}
+			
+			.form-horizontal .control-group {
+				margin-bottom: 2px;
+				*zoom: 1:;
+			}
+			
+			.form-horizontal .control-group::before,
+			.form-horizontal .control-group::after {
+				display: table;
+				line-height: 0;
+				content: "";
+			}
+			
+			.form-horizontal .control-group::after {
+				clear: both;
+			}
+			
+			.third_menu_below_config_font {
+				font-size: 14px;
+				color: #4e5254;
+				text-align: left;
+			}
+			
+			.form-horizontal .control-label {
+				float: left;
+				width: 40%;
+				padding-top: 8px;
+			}
+			
+			.paddingtop_8 {
+				padding-top: 8px;
+			}
+			
+			.form-horizontal .controls {
+				*display: inline-block:;
+				*padding-left: 20px:;
+				margin-left: 45%;
+				width: 51%;
+				*margin-left: 0:;
+			}
+			
+			.form-horizontal .control-label-left {
+				float: left;
+				text-align: left;
+			}
+			
+			.ic-open {
+				width: 16px;
+				height: 16px;
+				background-repeat: no-repeat;
+				overflow: hidden;
+				background-image: url('../res/atp-icon.png?WS550V100R001C01B0211234567890');
+				background-position: left -713px;
+			}
+			
+			.page_help_title {
+				font-size: 14px;
+				color: #2f83fd;
+				font-weight: bold;
+			}
+			
+			.page_help_body {
+				font-size: 14px;
+				color: #4e5254;
+				margin-top: 16px;
+				_margin-top: 0px;
+				margin-bottom: 28px;
+				width: 100%;
+			}
+			
+			ul,
+			ol {
+				padding: 0;
+				margin: 0 0 10px 25px;
+			}
+			
+			.nav {
+				margin-bottom: 20px;
+				margin-left: 0px;
+				list-style: none;
+			}
+			
+			.nav-list {
+				margin-bottom: 0px;
+			}
+			
+			.third_menu {
+				margin-top: 45px;
+			}
+			
+			li {
+				line-height: 20px;
+			}
+			
+			.ie6debug {
+				_margin-top: 10px;
+			}
+			
+			.hide {
+				display: none;
+			}
+			
+			.nav-list>li {
+				line-height: 35px;
+			}
+			
+			.paddingleft_28 {
+				padding-left: 28px;
+			}
+			
+			.second_menu {
+				width: 100%;
+				cursor: pointer;
+				color: #74797b;
+				font-weight: bold;
+				font-size: 15px;
+				font-family: Arial, "Adobe 黑体 Std", ;
+			}
+			
+			.second_menu_choose {
+				color: #3083fb;
+			}
+			
+			.nav>li>a {
+				display: block;
+			}
+			
+			.nav-list>li>a,
+			.nav-list .nav-header {
+				text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.5);
+			}
+		</style>
+	</head>
+
+	<body class="ember-application" windowc_onresizez="true" data-target=".bs-docs-sidebar" data-spy="scroll">
+
+		<div class="main-container">
+			<div class="container">
+				<div class="row-fluid main_content">
+					<div class="span3 bs-docs-sidebar body_content">
+						<ul class="nav nav-list third_menu" id="sub_menu_container">
+
+
+                            <div class="alert alert-dark" role="alert">
+								Nexus9000v设备基本功能
+							</div>
+							
+							
+							
+							<li class="ie6debug">
+								<a class="second_menu paddingleft_28 " id="internet_menuId" onclick="Atp.MenuController.clickSubmenu('internet');" href="/index1/" data-toggle="collapase">
+									<font>
+										Switching
+									</font>
+								</a>
+							</li>
+
+							<li class="ie6debug">
+								<a class="second_menu paddingleft_28" id="wan_setup_menuId" onclick="Atp.MenuController.clickSubmenu('wan_setup');" href="/index2/" data-toggle="collapase">
+									<font>
+										路由配置
+									</font>
+								</a>
+							</li>
+
+							<li class="ie6debug">
+								<a class="second_menu paddingleft_28" id="iptv_menuId" onclick="Atp.MenuController.clickSubmenu('iptv');" href="/index3/" data-toggle="collapase">
+									<font>
+										DHCP配置
+									</font>
+								</a>
+							</li>
+
+							<li class="ie6debug">
+								<a class="second_menu paddingleft_28 second_menu_choose" id="parent_control_menuId" onclick="Atp.MenuController.clickSubmenu('parent_control');" href="/index4/" data-toggle="collapase">
+									<font>
+										NAT配置
+									</font>
+								</a>
+							</li>
+
+							<li class="ie6debug">
+								<a class="second_menu paddingleft_28" id="network_security_menuId" onclick="Atp.MenuController.clickSubmenu('network_security');" href="/index5/" data-toggle="collapase">
+									<font>
+										访问控制列表
+									</font>
+								</a>
+							</li>
+							
+							
+							
+							<div class="alert alert-dark" role="alert">
+								Nexus9000v设备ARP相关功能
+							</div>
+
+							
+							
+							
+							<li class="ie6debug">
+								<a class="second_menu paddingleft_28" id="qos_menuId" onclick="Atp.MenuController.clickSubmenu('qos');" href="/index6/" data-toggle="collapase">
+									<font>
+										防ARP欺骗攻击功能
+									</font>
+								</a>
+							</li>
+
+							<li class="ie6debug">
+								<a class="second_menu paddingleft_28" id="Network_services_menuId" onclick="Atp.MenuController.clickSubmenu('Network_services');" href="/index7/" data-toggle="collapase" >
+									<font>
+										查询MAC地址与IP地址映射表
+									</font>
+								</a>
+							</li>
+
+							<li class="ie6debug">
+								<a class="second_menu paddingleft_28" id="nat_menuId" onclick="Atp.MenuController.clickSubmenu('nat');" href="/index8/" data-toggle="collapase">
+									<font>
+										ARP事件日志
+									</font>
+								</a>
+							</li>
+
+				
+						</ul>
+					</div>
+					
+					
+
+					<div class="span9 config_content">
+						<div id="container">
+
+							<div class="ember-view well setconfig_height well_reset">
+							    
+								<!--补充,引入外部代码-->
+								
+								<p align="left">配置NAT的类型</p>
+								
+								<div class="custom-control custom-radio" id="s1">
+									<input type="radio" id="customRadio1" name="customRadio" class="custom-control-input">
+									<label class="custom-control-label" for="customRadio1">静态NAT</label>
+								</div>
+								
+								<div class="input-group mb-3" id="snat" style="display: none;">
+									<input type="text" class="form-control" placeholder="请输入外部公网地址" aria-label="请输入外部公网地址" aria-describedby="button-addon2">
+									<input type="text" class="form-control" placeholder="请输入内部私网地址" aria-label="请输入内部私网地址" aria-describedby="button-addon2">
+									<!--<div class="input-group-append">-->
+										<button class="btn btn-outline-secondary" type="button" id="button-addon2">确认</button>
+									<!--</div>-->
+								</div>
+								
+								<div class="custom-control custom-radio" id="s2">
+									<input type="radio" id="customRadio2" name="customRadio" class="custom-control-input">
+									<label class="custom-control-label" for="customRadio2">动态NAT</label>
+								</div>
+								
+								<div class="custom-control custom-radio" id="s3">
+									<input type="radio" id="customRadio3" name="customRadio" class="custom-control-input">
+									<label class="custom-control-label" for="customRadio3">NAPT</label>
+								</div>
+								
+								<div class="custom-control custom-radio" id="s4">
+									<input type="radio" id="customRadio4" name="customRadio" class="custom-control-input">
+									<label class="custom-control-label" for="customRadio4">Easy IP</label>
+								</div>
+								
+								<!--补充,引入外部代码-->
+
+								
+
+							</div>
+
+
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+
+		<script src="{% static 'bootstrap/jquery/jquery.js' %}"></script>
+    <script src="{% static 'bootstrap/popper/popper.js' %}"></script>
+    <script src="{% static 'bootstrap/js/bootstrap.js' %}"></script>
+    <script src="{% static 'bootstrap/js/bootstrap.bundle.js' %}"></script>
+		<script type="text/javascript">
+			
+		    $(document).ready(function(){
+  			$("#s1").click(function(){
+                
+  			$("#snat").show();
+  			
+ 			});
+ 				
+ 			$("#s2").click(function(){
+                
+  			$("#snat").hide();	
+  		    });
+  		    
+  		    $("#s3").click(function(){
+                
+  			$("#snat").hide();
+  			});
+  			
+			$("#s4").click(function(){
+                
+			$("#snat").hide();
+			});
+ 			
+ 		});
+ 	</script>
+
+
+	</body>
+
+</html>

@@ -1,0 +1,41 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>登录界面</title>
+     <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap-grid.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap-reboot.css' %}">
+</head>
+<body>
+    <h1 style="text-align: center"> Welcome to n9kv</h1>
+    {# 登录表单  #}
+    <form class="calendar" action="/login/" method="post" style="margin: auto ;text-align: center "  >
+        {% csrf_token %}
+    <div  style="margin: auto ; text-align: center" >
+    <label for="IP">I   P&emsp;&emsp;&emsp;</label> <input   type="text" name="IP"/><br>
+    <label for="Username">Username</label> <input  style="margin: auto"  type="text" name="Username"/><br>
+    <label for="Password">Password</label> <input  style="margin: auto" type="password" name="Password"/><br>
+    </div>
+        {% if messages %}
+        <script>
+            {% for msg in messages %}
+                alert('{{ msg.message }}');
+            {% endfor %}
+        </script>
+    {% endif %}
+
+
+        <input  class="btn-danger" type="submit" value="登录">
+    </form>
+
+    <script src="{% static 'bootstrap/jquery/jquery.js' %}"></script>
+    <script src="{% static 'bootstrap/popper/popper.js' %}"></script>
+    <script src="{% static 'bootstrap/js/bootstrap.js' %}"></script>
+    <script src="{% static 'bootstrap/js/bootstrap.bundle.js' %}"></script>
+
+
+</body>
+</html>

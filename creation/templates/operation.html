@@ -1,0 +1,181 @@
+
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>操作页面</title>
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap-grid.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap-reboot.css' %}">
+
+
+
+</head>
+<body>
+{# switching 下拉菜单 #}
+<nav>
+ <div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+   Switching
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      {#  下拉菜单内容 #}
+    <button type="button" class="btn btn-primary" id="vlan">Vlan Database</button>
+  </div>
+     {# Interface 按钮 #}
+     <button type="button" class="btn btn-success" id="interface_btn">Interface</button>
+</div>
+
+
+
+</nav>
+    {# vlan Database 表单 #}
+<form class="form-control" style="width: 600px;height: 300px;margin: auto; display: none"  id="vlan_database" action="/operation/" method="post">
+        {% csrf_token %}
+  		<div class="input-group" style="width: 500px;margin: auto;">
+  			<p style="margin: auto ;">Vlan number</p>
+  			<input  type="number" max="3967" min="2" name="vlan_number" required class="form-control" placeholder="Vlan number" aria-label="Recipient's username with two button addons" aria-describedby="button-addon4">
+
+  				<div class="input-group-append" id="button-addon4">
+                    <input  class="btn btn-outline-secondary" type="submit" value="Add" name="Add"></input>
+
+    			    <input  class="btn btn-outline-secondary" type="submit" value="Remove" name="Remove"></input>
+  </div>
+</div>
+    {% if messages %}
+        <script>
+            {% for msg in messages %}
+                alert('{{ msg.message }}');
+            {% endfor %}
+        </script>
+    {% endif %}
+</form>
+ {# Interface 表单 #}
+<form class="form-control" style="width: 600px;height: 300px;margin: auto; display: none"  id="interface_form" action="/operation/" method="post" >
+    {% csrf_token %}
+    <div>
+    {# Eth接口选择，PortStatus选择 #}
+    <div class="custom-control custom-switch" style="margin: auto ;text-align: center">
+        Eth1/<input type="number" required max="128" min="1" value="1" name="Eth">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+        <input name="Port_Status" type="hidden" value="down">
+        <input type="checkbox" class="custom-control-input" id="customSwitch1"  value="up" name="Port_Status">
+
+  <label class="custom-control-label" for="customSwitch1">Port Status</label>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+
+    </div>
+
+    </div>
+    {# SwitchPort选择 #}
+    <div class="custom-control custom-switch">
+                <input name="Switch_Port" type="hidden" value="False">
+                <input type="checkbox" class="custom-control-input" id="switchPort" value="True" name="Switch_Port">
+         <label class="custom-control-label" for="switchPort">Switch Port</label>
+</div><br>
+
+        <div  id="SwitchPort_div" style="display: none">
+        Select Switchport_Mode
+    <select  id="Select_SwitchPort_Mode" class="custom-select" name="Select_SwitchPort_Mode" onchange="gradeChange()" >
+
+            <option grade="Access" value="Access">Access</option>
+            <option grade="Trunk" value="Trunk" name="Trunk"> Trunk</option>
+            <option value="Fex-fabric">fex-fabric</option>
+            <option value="Dot1q-tunnel">dot1q-tunnel</option>
+            <option value="Promiscuous">promiscuous</option>
+            <option value="Host">host</option>
+            <option value="Trunk_secondary">trunk_secondary</option>
+            <option value="Tunk_promiscuous">trunk_promiscuous</option>
+
+</select>
+
+        <div id="Select_Vlan_div">
+        Select Vlan
+    <select id="Select_Vlan" class="custom-select" name="Select_Vlan">
+        <option value="1">vlan1</option>
+        {% for i in  N9kv_vlanDatabase  %}
+            <option value={{ i}}>vlan{{i}}</option>
+        {% endfor %}
+
+
+
+</select>
+
+    </div>
+        通过的vlan<input type="number" min="1" max="3967">
+
+    </div>
+    {# Router_port #}
+    <div  id="Router_port" >
+
+        IP &emsp;<input type="text" placeholder="IP" name="Port_IP">&emsp;&emsp;
+        Subnet Mask &emsp;<input type="number"  name="Port_Mask"  max="32" min="0" >
+
+
+    </div>
+    <br>
+
+   &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+    &emsp;&emsp;
+    <input  class="btn btn-primary" type="submit" value="保存" name="Interface_form" >
+
+
+
+
+
+</form>
+<div id="ask">{{ N9kv_vlanDatabase }}</div>
+
+
+
+
+<!-- 引入bootstrap的js文件 -->
+    <script src="{% static 'bootstrap/jquery/jquery.js' %}"></script>
+    <script src="{% static 'bootstrap/popper/popper.js' %}"></script>
+    <script src="{% static 'bootstrap/js/bootstrap.js' %}"></script>
+    <script src="{% static 'bootstrap/js/bootstrap.bundle.js' %}"></script>
+
+    <!-- bootstrap.js 依赖 jquery.js 和popper.js，因此在这里引入 -->
+     	<script type="text/javascript">
+				$(document).ready(function(){
+  			$("#vlan").click(function(){
+                {# 点击Vlandatabase按钮触发 vlan_database，Interface表单的display  #}
+  			$("#vlan_database").toggle();
+  			$("#interface_form").hide();
+
+            	});
+                    {# 点击interface按钮触发 vlan_database，Interface表单的display  #}
+  			$("#interface_btn").click(function(){
+  			$("#vlan_database").hide();
+  			$("#interface_form").toggle();
+
+				});
+            {# 点击switchPort按钮触发 SwitrchPort_div，Router_port的display  #}
+				$("#switchPort").click(function(){
+  			$("#SwitchPort_div").toggle();
+  			$("#Router_port").toggle();
+
+
+				});
+
+  			});
+</script>
+<script type="text/javascript">
+       function gradeChange(){
+        var objS = document.getElementById("Select_SwitchPort_Mode");
+        var grade = objS.options[objS.selectedIndex].value;
+        if (grade=="Trunk") {
+            $("#Select_Vlan_div").hide();
+        }
+        else if (grade=="Access"){
+            $("#Select_Vlan_div").show();
+        }
+
+       }
+</script>
+
+</body>
+</html>

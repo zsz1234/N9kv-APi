@@ -1,0 +1,33 @@
+
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>登录界面</title>
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}">
+</head>
+<body>
+
+
+
+<!-- 定义导航栏 -->
+
+ <input id="ticketNum" type="number" name="ticketNum" list="defaultNumbers">
+<span class="validity"></span>
+
+<datalist id="defaultNumbers">
+  <option value="10045678">
+  <option value="103421">
+  <option value="11111111">
+  <option value="12345678">
+  <option value="12999922">
+</datalist>
+    <!-- bootstrap.js 依赖 jquery.js 和popper.js，因此在这里引入 -->
+    <script src="{% static 'jquery/jquery.js' %}"></script>
+    <script src="{% static 'popper/popper.js' %}"></script>
+    <!-- 引入bootstrap的js文件 -->
+    <script src="{% static 'bootstrap/js/bootstrap.js' %}"></script>
+</body>
+</html>
